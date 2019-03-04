@@ -29,15 +29,14 @@
     * Has a date
     * Has a host
     * Has a location
-    * Has a theme
+    * Has a cuisine
     * Has a price, or cost per guest
     * Has a size attribute: Maximum guests?
     * Has many DinnerGuests
 * Reviews
-    * Has a user_id
     * Has a dinner party id
     * Has review text
-
+    * Has star rating
 
 
 
