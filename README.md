@@ -35,7 +35,8 @@
     * Has many DinnerGuests
 * Reviews
     * Has a user_id
-    * Has a author_id
+    * Has a dinner party id
+    * Has review text
 
 
 
