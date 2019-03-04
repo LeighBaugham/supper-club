@@ -1,0 +1,2 @@
+module DinnerPartiesHelper
+end
