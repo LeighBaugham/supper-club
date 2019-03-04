@@ -38,5 +38,10 @@
     * Has review text
     * Has star rating
 
+* Dinner Guest
+    * Has a user id
+    * Has a party id
+    
+
 
 
