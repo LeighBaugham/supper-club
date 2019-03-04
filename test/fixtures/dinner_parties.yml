@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  date: 2019-03-04 14:18:10
+  location: MyString
+  cuisine: MyString
+  max_guests: 1
+  price_per_guest: 1.5
+
+two:
+  user_id: 1
+  date: 2019-03-04 14:18:10
+  location: MyString
+  cuisine: MyString
+  max_guests: 1
+  price_per_guest: 1.5

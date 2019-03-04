@@ -1,0 +1,2 @@
+module DinnerGuestsHelper
+end
