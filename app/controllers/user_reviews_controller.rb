@@ -36,7 +36,7 @@ class UserReviewsController < ApplicationController
             @user_review.destroy 
             redirect_to user_path(@user.id)
         end
-
+    end
 
     private
     def review_params
