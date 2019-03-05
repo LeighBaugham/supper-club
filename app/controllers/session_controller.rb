@@ -10,10 +10,10 @@ class SessionController
         #Otherwise render the login page with a error message
 
         @message = nil
-        @user = User.find_by(user_name: params[:user_name])
-        if @user && @user.authenticate(params[:password])
-            session[:user] = @user.id
-            redirect_to user_path(@user)
+        user = User.find_by(user_name: params[:user_name])
+        if user && user.authenticate(params[:password])
+            login_user(user)
+            redirect_to user #user_path(@user)
         else
             @message = "Username or password do not match"
             render "login"
