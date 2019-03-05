@@ -4,6 +4,11 @@ class User < ApplicationRecord
     has_many :dinner_parties, through: :dinner_guests
     has_many :hosted_parties, class_name: "DinnerParty"
     has_many :user_reviews, through: :dinner_guests 
+    validates :user_name, :password, :name, presence: true
+    validates :password, length: {minimum: 6, maximum: 16}
+    validates :user_name, length: {minimum: 4}
+    validates :name, length: { minimum: 3}
+    validates :user_name, format: {with: /\A[a-z0-9]+\z/}
 
 
     validates :name, presence: true

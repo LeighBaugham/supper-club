@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    before_action :current_user
     def show
         @user = User.find(params[:id])
     end 
@@ -10,11 +10,16 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        log_in(@user)
         redirect_to user_path(@user)
     end
 
     def edit
-        @user = User.find(params[:id])
+        if logged_in?
+            @user = @current_user
+        else
+            redirect_to login_path
+        end
     end
 
     def update
@@ -32,6 +37,6 @@ class UsersController < ApplicationController
     private
 
     def user_params 
-        params.require(:user).permit(:name, :user_name, :password_digest)
+        params.require(:user).permit(:name, :user_name, :password)
     end
 end
