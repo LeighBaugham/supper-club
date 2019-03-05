@@ -11,7 +11,7 @@ class SessionController
 
         @message = nil
         @user = User.find_by(user_name: params[:user_name])
-        if @user && @user.password == params[:password]
+        if @user && @user.authenticate(params[:password])
             session[:user] = @user.id
             redirect_to user_path(@user)
         else
