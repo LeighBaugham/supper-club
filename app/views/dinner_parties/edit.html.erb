@@ -1,0 +1,14 @@
+<h1>Change a Dinner Party</h1>
+
+<%= form_for(@dinner_party) do |f| %>
+<%= f.label :user_id %> <%= f.text_field(:user_id, placeholder:"Should default to current user") %>
+<%= f.label :date %> <%= f.date_field(:date, placeholder: "Date") %>
+<%= f.label :location %> <%= f.text_field(:location, placeholder: "Place") %>
+<%= f.label :cuisine %> <%= f.text_field(:cuisine, placeholder: "Cuisine") %>
+<%= f.label :max_guests %> <%= f.text_field(:max_guests, placeholder: "Maximum Guest Count") %>
+<%= f.label :price_per_guest %> <%= f.text_field(:price_per_guest, placeholder: "Price per Guest") %>
+<br />
+<%= f.submit %> <% end %>
+
+<br />
+<%= link_to "Return to List of Parties", dinner_parties_path %> <%= link_to "Host a Dinner Party", new_dinner_party_path %>

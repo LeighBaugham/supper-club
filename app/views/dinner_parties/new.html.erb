@@ -1,0 +1,18 @@
+<h1>Let's Throw a Party!</h1>
+
+<%= form_for(@dinner_party) do |f| %>
+<%= f.label :user_id %><br>
+<%= f.text_field(:user_id, placeholder:"Should default to current user") %><br>
+<br>
+<%= f.label :date %> <%= f.date_field(:date, placeholder: "Date") %><br>
+<br>
+<%= f.label :location %> <%= f.text_field(:location, placeholder: "Place") %><br>
+<br>
+<%= f.label :cuisine %> <%= f.text_field(:cuisine, placeholder: "Cuisine") %><br>
+<br>
+<%= f.label :max_guests %> <%= f.text_field(:max_guests, placeholder: "Maximum Guest Count") %><br>
+<br>
+<%= f.label :price_per_guest %> <%= f.text_field(:price_per_guest, placeholder: "Price per Guest") %>
+<br />
+<%= f.submit %>
+<% end %>

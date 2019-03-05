@@ -1,0 +1,10 @@
+<h1>Dinner Parties</h1>
+
+<ul>
+<% @dinner_parties.each {|party| %>
+   <li><%= link_to (party.date.to_s + party.location), dinner_party_path(party.id)%> </li>
+   <% } %>
+</ul>
+
+
+<p> <%= link_to "Host a party", new_dinner_party_path  %> </p>

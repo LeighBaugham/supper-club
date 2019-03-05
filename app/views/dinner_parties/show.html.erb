@@ -1,0 +1,13 @@
+<h1>Dinner Party Details</h1>
+
+<h3>Hosting Chef: <%= @dinner_party.user_id %> </h3>
+<h3>Date: <%= @dinner_party.date %> </h3>
+<h3>Place: <%= @dinner_party.location %> </h3>
+<h3>Cuisine: <%= @dinner_party.cuisine %> </h3>
+<h3>Prix Fixe: <%= @dinner_party.price_per_guest %></h3>
+
+<h3>To attend this party, click here</h3>
+
+
+<h3>To choose another party, click <%= link_to " here.", dinner_parties_path %> </h3>
+<h3>To create a new dinner party, click <%= link_to " here.", new_dinner_party_path %>  </h3>
