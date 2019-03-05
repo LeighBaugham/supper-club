@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :current_user
     def show
-        
         @user = User.find(params[:id])
     end 
 
@@ -10,8 +9,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        byebug
         @user = User.create(user_params)
+        log_in(@user)
         redirect_to user_path(@user)
     end
 
