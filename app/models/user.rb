@@ -28,6 +28,13 @@ class User < ApplicationRecord
              html_string << "</li>"
          end
          html_string << "</ul>"
+         if reviews.count == 0
+             html_string = "<ul><li>You haven't made any reviews yet</li>"
+         end
+         if block_given?
+            html_string << yield
+         end
+         html_string << "</ul>"
          html_string.html_safe
     end
 
@@ -44,9 +51,12 @@ class User < ApplicationRecord
         end
         html_string << "</ul>"
         if parties.count == 0
-            html_string = "<ul><li>You haven't selected any parties to attend yet</li></ul>"
+            html_string = "<ul><li>You haven't selected any parties to attend yet</li>"
         end
-        
+        if block_given?
+            html_string << yield
+        end
+        html_string << "</ul>"
         html_string.html_safe
     end
 
