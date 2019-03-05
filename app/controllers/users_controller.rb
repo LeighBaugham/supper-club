@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        byebug
         @user = User.create(user_params)
         redirect_to user_path(@user)
     end
@@ -37,6 +38,6 @@ class UsersController < ApplicationController
     private
 
     def user_params 
-        params.require(:user).permit(:name, :user_name, :password_digest)
+        params.require(:user).permit(:name, :user_name, :password)
     end
 end
