@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
     def show
         @user = User.find(params[:id])
     end 
@@ -14,7 +13,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+        if logged_in?
+            @user = @current_user
+        else
+            redirect_to login_path
+        end
     end
 
     def update
