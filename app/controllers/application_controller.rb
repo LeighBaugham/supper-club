@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in? #not sure if we need this, but why not
-        !@current_user.nil?
+        !current_user.nil?
     end
 end

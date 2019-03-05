@@ -1,6 +1,10 @@
-class SessionController
+class SessionController < ApplicationController
     def new
-        render "login"
+        if logged_in?
+            redirect_to current_user
+        else
+            render "login"
+        end
     end
 
     def create 
@@ -11,8 +15,9 @@ class SessionController
 
         @message = nil
         user = User.find_by(user_name: params[:user_name])
+        
         if user && user.authenticate(params[:password])
-            login_user(user)
+            log_in(user)
             redirect_to user #user_path(@user)
         else
             @message = "Username or password do not match"
@@ -22,7 +27,7 @@ class SessionController
 
     def destroy
         #Log out by deleting the user value from the session
-        session.delete :user
+        session.delete :user_id
         #TODO
         #Maybe this will be a "good bye message" at some point?
         redirect_to "/"
