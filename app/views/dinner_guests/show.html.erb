@@ -1,5 +1,5 @@
-<h1>Thanks <%= @user_id.name %>!</h1><br>
+<h1>Thanks <%= @dinner_guest.user.name %>!</h1><br>
 
-<h2>See you at <%= @dinner_party_id.location  %></h2>
+<h2>See you at <%= @dinner_guest.dinner_party.location  %></h2>
 
-<h3>On <%= @dinner_party_id.date %></h3>
+<h3>On <%= @dinner_guest.dinner_party.date %></h3>

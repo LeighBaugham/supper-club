@@ -1,5 +1,4 @@
 class DinnerGuestsController < ApplicationController
-
     def show
         @dinner_guest = DinnerGuest.find(params[:id])
     end
@@ -9,8 +8,8 @@ class DinnerGuestsController < ApplicationController
     end
 
     def create
-        @dinner_guest = DinnerGuest.find(params[:id])
-        @dinner_guest.create(dg_params)
+        @user = current_user
+        @dinner_guest = DinnerGuest.create(user_id: @user.id, dinner_party_id: params[:dinner_party_id])
         redirect_to dinner_guest_path(@dinner_guest)
     end
 
@@ -22,6 +21,6 @@ class DinnerGuestsController < ApplicationController
 
     private
     def dg_params
-        params.require(:dinner_guest).permit(:user_id, :dinner_party_id)
+        params.permit(:dinner_party_id)
     end
 end
