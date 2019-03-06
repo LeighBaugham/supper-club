@@ -28,7 +28,36 @@ class User < ApplicationRecord
              html_string << "</li>"
          end
          html_string << "</ul>"
-    
+         if reviews.count == 0
+             html_string = "<ul><li>You haven't made any reviews yet</li>"
+         end
+         if block_given?
+            html_string << yield
+         end
+         html_string << "</ul>"
+         html_string.html_safe
+    end
+
+    def print_all_parties
+        #Return an html string about with all the parties a user is attending
+        parties = self.dinner_parties
+        html_string = "<ul>"
+        
+        parties.each do |party|
+            party_string = "#{party.cuisine}, Hosted by: #{party.user.name}, at: #{party.location}"
+            html_string << "<li>"
+            html_string << party_string
+            html_string << "</li>"
+        end
+        html_string << "</ul>"
+        if parties.count == 0
+            html_string = "<ul><li>You haven't selected any parties to attend yet</li>"
+        end
+        if block_given?
+            html_string << yield
+        end
+        html_string << "</ul>"
+        html_string.html_safe
     end
 
 end
