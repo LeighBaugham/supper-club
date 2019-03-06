@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <%= link_to "Home", root_path %>
+      <%= link_to "View Parties", dinner_parties_path %>
+      <% if logged_in? %>
+        <%= link_to "My Profile", user_path(current_user) %>
+        <%= link_to "Log Out", logout_path %>
+      <% else %>
+        <%= link_to "Log In", login_path %>
+        <%= link_to "Sign Up!", new_user_path %>
+
+      <% end %>
+    </nav>
+    <% if flash[:error] %>
+      <p style="color: red">
+        <%= flash[:error] %>
+      </p>
+    <% elsif flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+    <div>
+      <%= yield %>
+    </div>
   </body>
 </html>
