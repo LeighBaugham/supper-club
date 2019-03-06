@@ -17,6 +17,8 @@ class User < ApplicationRecord
     has_secure_password
 
     def print_all_reviews
+    #This method can receive an optional block of text 
+    #The block will be added inside of the <ul> tag
          reviews  = self.user_reviews
          html_string = "<ul>"
          reviews.each do |review|
@@ -40,6 +42,8 @@ class User < ApplicationRecord
 
     def print_all_parties
         #Return an html string about with all the parties a user is attending
+        #This method can receive an optional block of text 
+        #The block will be added inside of the <ul> tag
         parties = self.dinner_parties
         html_string = "<ul>"
         
