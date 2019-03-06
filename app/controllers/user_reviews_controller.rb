@@ -22,7 +22,7 @@ class UserReviewsController < ApplicationController
             @user_review.destroy 
             redirect_to user_path(@user.id)
         end
-    end
+    
 private
 def review_params
     params.require(:user_review).permit(:dinner_guest_id, :rating, :review_text)
