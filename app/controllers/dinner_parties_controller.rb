@@ -21,19 +21,18 @@ class DinnerPartiesController < ApplicationController
    end
 
    def edit
-        @dinner_party = Dinner_party.find(params[:id])
+        @dinner_party = DinnerParty.find(params[:id])
    end
 
    def update
-        @dinner_party = Dinner_party.update(dinner_party_params)
+        @dinner_party = DinnerParty.update(dinner_party_params)
         redirect_to dinner_party_path(@dinner_party)
    end
 
    def destroy
-        Dinner_party.find(params[:id]).destroy
+        DinnerParty.find(params[:id]).destroy
         redirect_to dinner_parties_path
    end
-
 
    private
 
