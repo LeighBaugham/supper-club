@@ -5,7 +5,15 @@
 
 
 <h3>Parties Coming Up:</h3>
-<%= @user.print_all_parties %>
+<%= tag.ul do %>
+  <% @user.future_parties.each do |party| %>
+    <%= tag.li do %>
+      <%= tag.p(link_to(party.print_short_date, party)) %>
+      <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
+    <% end %>
+  <% end %>
+
+<% end %>
 
 
 <h3><%= @user.user_name.capitalize %> Reviews</h3>

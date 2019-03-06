@@ -13,6 +13,14 @@ class User < ApplicationRecord
 
   
     has_secure_password
+    def future_parties
+        self.dinner_parties.select {|p| p.date.future? }
+    end
+
+    def past_parties
+        self.dinner_parties.select {|p| p.date.past? }
+    end
+
 
     def print_all_reviews
     #This method can receive an optional block of text 
