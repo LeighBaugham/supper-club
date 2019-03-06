@@ -3,6 +3,9 @@ class DinnerParty < ApplicationRecord
     belongs_to :user
     has_many :user_reviews, through: :dinner_guests
 
+   LOCATION_LIST = ["Buckhead", "Downtown", "East Atlanta", "Inman Park", "Little Five Points", "Midtown", "Virginia-Highland", "West Midtown"]
+   CUISINE_LIST = ["Asian Fusion", "Cajun", "Chef's Choice", "French", "Indian", "Mediterranean", "Mexican", "Southern"]
+
     include ActionView::Helpers::TagHelper
 
     def print_long_date
