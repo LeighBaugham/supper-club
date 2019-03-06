@@ -1,17 +1,24 @@
-<h1>Welcome <%= @user.name %>!</h1>
+<h1>User Profile: <%= @user.name %></h1>
 <h2>Username: <%= @user.user_name %></h2>
 
-<%= form_tag user_path(@user.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@user.name}" %><br>
-  <% end %>
-<%= link_to("Edit User Info", edit_user_path) %><br>
 
-<%= link_to("Join a Party!", dinner_parties_path) %><br>
-<%= link_to("Create a Party!", new_dinner_party_path) %> <br>
-<%= link_to("Log Out", logout_path ) %>
+
+
 <h3>Parties Coming Up:</h3>
 <%= @user.print_all_parties %>
 
 
-<h3>Your Reviews</h3>
-<%= @user.print_all_reviews { "<li>#{link_to("Make a new one", new_user_review_path)}</li>"} %>
+<h3><%= @user.user_name.capitalize %> Reviews</h3>
+<%= @user.print_all_reviews %>
+
+<% if logged_in? %>
+    <%= form_tag user_path(@user.id), method: "delete" do %>
+      <%= submit_tag "Delete #{@user.name}" %><br>
+    <% end %>
+  <%= link_to("Edit User Info", edit_user_path) %><br>
+
+  <%= link_to("Join a Party!", dinner_parties_path) %><br>
+  <%= link_to("Create a Party!", new_dinner_party_path) %> <br>
+  <%= link_to("Log Out", logout_path ) %>
+
+<% end %>
