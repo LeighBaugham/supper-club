@@ -4,8 +4,14 @@
 <%= f.label :review_text %>
 <%= f.text_field :review_text %><br>
 
-<%= f.label :rating %>
-<%= f.text_field :rating %><br>
+<%= f.hidden_field :dinner_guest_id,:value => params[:dinner_guest_id]  %>
+    <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.select(:rating, UserReview::RATING_LIST) %>
+  </div>
+
+
+ 
 
 
 <%= f.submit %>
