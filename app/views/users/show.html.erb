@@ -9,7 +9,7 @@
 
 
 <h3><%= @user.user_name.capitalize %> Reviews</h3>
-<%= @user.print_all_reviews { "<li>#{link_to("Make a new one", new_user_review_path)}</li>"} %>
+<%= @user.print_all_reviews %>
 
 <% if logged_in? %>
     <%= form_tag user_path(@user.id), method: "delete" do %>
