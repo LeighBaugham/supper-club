@@ -2,10 +2,12 @@ class UsersController < ApplicationController
     before_action :current_user
     def show
         @user = User.find(params[:id])
+        render "show"
     end 
 
     def new
         @user = User.new
+        render "new"
     end
 
     def create
@@ -15,8 +17,9 @@ class UsersController < ApplicationController
     end
 
     def edit
+        @user = User.find(params[:id])
         if logged_in?
-            @user = @current_user
+            render "edit"
         else
             redirect_to login_path
         end
