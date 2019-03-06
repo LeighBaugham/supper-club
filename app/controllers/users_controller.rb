@@ -11,9 +11,14 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        log_in(@user)
-        redirect_to user_path(@user)
+        @user = User.new(user_params)
+        if @user.valid?
+            log_in(@user)
+            redirect_to user_path(@user)
+        else
+            flash[:errors] = @user.errors
+            render "new"
+        end
     end
 
     def edit
