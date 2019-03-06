@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             @user.save
             redirect_to user_path(@user)
         else
-            flash[:error] = @user.errors.full_messages.join
+            flash[:error] = @user.errors.full_messages.join(" ")
             render "new"
         end
     end
@@ -33,8 +33,12 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user)
+        if @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            flash[:error] = @user.errors.full_messages.join(" ")
+            render "edit"
+        end
     end
 
     def destroy
