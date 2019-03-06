@@ -31,7 +31,7 @@ class DinnerPartiesController < ApplicationController
 
    def destroy
         DinnerParty.find(params[:id]).destroy
-        redirect_to dinner_parties_path
+        redirect_to user_path(current_user)
    end
 
    private

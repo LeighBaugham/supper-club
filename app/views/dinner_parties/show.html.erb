@@ -4,7 +4,6 @@
 <h3>Date: <%= @dinner_party.date %> </h3>
 <h3>Place: <%= @dinner_party.location %> </h3>
 <h3>Cuisine: <%= @dinner_party.cuisine %> </h3>
-<h3>Prix Fixe: <%= @dinner_party.price_per_guest %></h3>
 <h3>To attend this party, click here
 <%= form_tag dinner_guests_path , method: "post" do %>
 <%= hidden_field_tag "dinner_party_id", @dinner_party.id  %>
@@ -14,8 +13,8 @@
 <h3>To choose another party, click <%= link_to " here.", dinner_parties_path %> </h3>
 <h3>To create a new dinner party, click <%= link_to " here.", new_dinner_party_path %>  </h3>
 <h3><h3>To cancel this party, click here
-<%= form_tag dinner_guests_path , method: "post" do %>
-<%= hidden_field_tag "dinner_party_id", @dinner_party.id  %>
-<%= submit_tag "Attend" %>
+
+<%= form_tag dinner_party_path(@dinner_party.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@dinner_party.user.name}'s party'" %>
 <% end %>
 </h3></h3>
