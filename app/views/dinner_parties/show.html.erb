@@ -6,11 +6,23 @@
 <h3>Date: <%= @dinner_party.date %> </h3>
 <h3>Place: <%= @dinner_party.location %> </h3>
 <h3>Cuisine: <%= @dinner_party.cuisine %> </h3>
+
+<% if current_user.attending?(@dinner_party) %>
+<h3>To review this party, click here</h3>
+<%= form_tag new_user_review_path , method: "get" do %>
+<%= hidden_field_tag :dinner_guest_id, @dinner_party.dinner_guests.find {|dg| dg.user_id == current_user.id  }.id  %>
+<%= submit_tag "Review" %>
+<% end %>
+
+
+<% else %>
 <h3>To attend this party, click here
 <%= form_tag dinner_guests_path , method: "post" do %>
 <%= hidden_field_tag "dinner_party_id", @dinner_party.id  %>
 <%= submit_tag "Attend" %>
 <% end %>
+<% end %>
+
 
 </h3>
 <h3>To select a different party, click <%= link_to " here.", dinner_parties_path %> </h3>
