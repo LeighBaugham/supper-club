@@ -3,25 +3,41 @@
 
 
 
-
-<h3>Parties Coming Up: </h3>
+<div>
+<h3>Parties Attending: </h3>
 <%= tag.ul do %>
   <% @user.future_parties.each do |party| %>
     <%= tag.li do %>
+      <%= tag.p(party.name ? party.name : "No Name") %>
       <%= tag.p(link_to(party.print_short_date, party)) %>
       <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
     <% end %>
   <% end %>
 <% end %>
 
-<p><%= link_to "View past Parties", user_history_path(@user) %></p>
+<p><%= link_to "View past parties", user_history_path(@user) %></p>
+</div>
+<div>
+  <h3>Parties being Hosted</h3>
+    <%= tag.ul do %>
+      <% @user.future_hosted_parties.each do |party| %>
+        <%= tag.li do %>
+          <%= tag.p(party.name ? party.name : "No Name") %>
+          <%= tag.p(link_to(party.print_short_date, party)) %>
+          <%= tag.p("Location: #{party.location}, Confirmed Guests: #{party.dinner_guests.count}") %>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>
+
 
 <h3><%= @user.user_name.capitalize %> Reviews</h3>
-<% reviews = @user.user_reviews %>
-<% reviews.each do |review|%>
-<li><%= link_to(review.review_text, user_review_path(@user)) %></li>
-<% end %>
-
+  <% reviews = @user.user_reviews %>
+  <ul>
+    <% reviews.each do |review|%>
+      <li><%= link_to(review.review_text, user_review_path(@user)) %></li>
+    <% end %>
+  </ul>
 
 <% if logged_in? %>
     <%= form_tag user_path(@user.id), method: "delete" do %>

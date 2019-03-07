@@ -22,6 +22,10 @@ class User < ApplicationRecord
         self.dinner_parties.select {|p| p.date.past? }
     end
 
+    def future_hosted_parties
+        self.hosted_parties.select {|p| p.date.future?}
+    end
+
 
     def print_all_reviews
     #This method can receive an optional block of text 
