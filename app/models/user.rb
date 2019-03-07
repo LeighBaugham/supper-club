@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :dinner_guests
     has_many :dinner_parties, through: :dinner_guests
     has_many :hosted_parties, class_name: "DinnerParty"
-    has_many :user_reviews, through: :dinner_guests 
+    has_many :user_reviews, through: :dinner_guests
     validates :user_name, :password, :name, presence: true
     validates :user_name, length: {minimum: 4}
     validates :user_name, uniqueness: true

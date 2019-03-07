@@ -17,7 +17,11 @@
 
 
 <h3><%= @user.user_name.capitalize %> Reviews</h3>
-<%= @user.print_all_reviews %>
+<% reviews = @user.user_reviews %>
+<% reviews.each do |review|%>
+<li><%= link_to(review.review_text, user_review_path(@user)) %></li>
+<% end %>
+
 
 <% if logged_in? %>
     <%= form_tag user_path(@user.id), method: "delete" do %>
@@ -25,6 +29,5 @@
     <% end %>
   <%= link_to("Edit User Info", edit_user_path) %><br>
 
-  <%= link_to("Join a Party!", dinner_parties_path) %><br>
-  <%= link_to("Create a Party!", new_dinner_party_path) %> <br>
+
 <% end %>
