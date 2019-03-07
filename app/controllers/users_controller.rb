@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.valid?
-            log_in(@user)
             @user.save
+            log_in(@user)
             redirect_to user_path(@user)
         else
             flash[:error] = @user.errors.full_messages.join(" ")
@@ -45,6 +45,11 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.destroy
         redirect_to new_user_path
+    end
+
+    def history
+        @user = User.find(params[:id])
+        render "history"
     end
 
     private

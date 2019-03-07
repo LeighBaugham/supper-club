@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get "/login" , to: "session#new"
   post "/login", to: "session#create"
   get "/logout" , to: "session#destroy"
+  get "/user/:id/partyhistory", to: "users#history", as: :user_history
 end
