@@ -10,7 +10,11 @@ class DinnerPartiesController < ApplicationController
    end
 
    def new
-      @dinner_party = DinnerParty.new()
+      if logged_in?
+      @dinner_party = DinnerParty.new
+      else
+      redirect_to login_path
+      end
 
    end
 
