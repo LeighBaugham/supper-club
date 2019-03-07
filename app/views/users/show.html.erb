@@ -40,10 +40,6 @@
   </ul>
 
 <% if logged_in? %>
-    <%= form_tag user_path(@user.id), method: "delete" do %>
-      <%= submit_tag "Delete #{@user.name}" %><br>
-    <% end %>
-  <%= link_to("Edit User Info", edit_user_path) %><br>
-
-
+    <%= link_to( "Delete", @user, method: :delete, data: { confirm: "Are you sure?" }) %>
+    <%= link_to("Edit User Info", edit_user_path) %><br>
 <% end %>
