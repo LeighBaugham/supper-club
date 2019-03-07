@@ -35,7 +35,14 @@
   <% reviews = @user.user_reviews %>
   <ul>
     <% reviews.each do |review|%>
-      <li><%= link_to(review.review_text, user_review_path(@user)) %></li>
+      <%= tag.li do %>
+        <%= tag.p do %>
+          <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review %>
+        <% end %>
+        <%= tag.p do %>
+          <pre><%= review.review_text.first(30) + "..." %></pre>
+        <% end %>
+      <% end %>
     <% end %>
   </ul>
 
