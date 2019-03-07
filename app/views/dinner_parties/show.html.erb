@@ -1,6 +1,8 @@
 <h1>Dinner Party Details</h1>
 
-<h3>Hosting Chef: <%= @dinner_party.user_id %> <%= @dinner_party.user.name %></h3><br />
+<h1><%= @dinner_party.name %></h1>
+
+<h2>Host and Chef: <%= @dinner_party.user.name %></h2><br />
 <h3>Date: <%= @dinner_party.date %> </h3>
 <h3>Place: <%= @dinner_party.location %> </h3>
 <h3>Cuisine: <%= @dinner_party.cuisine %> </h3>
@@ -11,11 +13,11 @@
 <% end %>
 
 </h3>
-<h3>To choose another party, click <%= link_to " here.", dinner_parties_path %> </h3>
+<h3>To select a different party, click <%= link_to " here.", dinner_parties_path %> </h3>
 <h3>To create a new dinner party, click <%= link_to " here.", new_dinner_party_path %>  </h3>
-<h3><h3>To cancel this party, click here
+<h3>To cancel this party, click here
 
 <%= form_tag dinner_party_path(@dinner_party.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@dinner_party.user.name}'s party'" %>
+  <%= submit_tag "Cancel this party'" %>
 <% end %>
-</h3></h3>
+</h3>
