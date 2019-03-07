@@ -1,0 +1,8 @@
+<h2>Party History for: <%= @user.user_name %></h2>
+
+<%= tag.ul do %>
+    <% @user.past_parties.each do |party| %>
+        <%= tag.li(link_to(party.print_short_date, dinner_party_path(party))) %>
+    <% end %>
+
+<% end %>
