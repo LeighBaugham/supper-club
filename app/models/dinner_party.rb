@@ -1,4 +1,5 @@
 class DinnerParty < ApplicationRecord
+    validates :date, presence: true
     has_many :dinner_guests, dependent: :destroy
     belongs_to :user
     has_many :user_reviews, through: :dinner_guests

@@ -2,9 +2,9 @@
 
 <ul>
 <% @dinner_parties.each {|party| %>
-   <li><%= link_to ("#{party.print_short_date} #{party.location}"), dinner_party_path(party.id)%> </li>
+   <li><%= link_to ("#{party.name} - #{party.print_short_date} in #{party.location}"), dinner_party_path(party.id)%> 
+   <%= link_to "Delete", party, method: :delete, data: { confirm: "Are you sure?" } %></li>
    <% } %>
 </ul>
-
 
 <p> <%= link_to "Host a party", new_dinner_party_path  %> </p>

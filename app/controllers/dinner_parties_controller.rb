@@ -15,7 +15,6 @@ class DinnerPartiesController < ApplicationController
       else
       redirect_to login_path
       end
-
    end
 
    def create
@@ -41,7 +40,7 @@ class DinnerPartiesController < ApplicationController
    private
 
    def dinner_party_params
-      params.require(:dinner_party).permit(:user_id, :date, :location, :cuisine, :max_guests, :price_per_guest)
+      params.require(:dinner_party).permit(:user_id, :name, :date, :location, :cuisine, :max_guests, :price_per_guest)
 
    end
 
