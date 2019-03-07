@@ -4,7 +4,7 @@
 
 
 
-<h3>Parties Coming Up:</h3>
+<h3>Parties Coming Up: </h3>
 <%= tag.ul do %>
   <% @user.future_parties.each do |party| %>
     <%= tag.li do %>
@@ -12,8 +12,8 @@
       <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
     <% end %>
   <% end %>
-
 <% end %>
+<p><%= link_to "View past Parties", user_history_path(@user) %></p>
 
 
 <h3><%= @user.user_name.capitalize %> Reviews</h3>
