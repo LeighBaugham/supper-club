@@ -1,9 +1,9 @@
 <h1>User Reviews</h1><br>
 
 <p>
-    <%= @user_review.review_text %>
+   <%= @user_review.review_text %>
     </p>
-<%= @user_review.rating %>
+Fun Factor: <%= @user_review.rating %>
 
 <%= form_tag user_review_path(@user_review.id), method: "delete" do %>
   <%= submit_tag "Delete" %>
