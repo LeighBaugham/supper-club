@@ -8,9 +8,11 @@
 
 <%= form_for(@dinner_party) do |f| %>
 <div class="field">
-<%= f.label :user_id %><br>
-<%= f.text_field(:user_id, placeholder:"Should default to current user", :readonly => true) %>
 <%= f.hidden_field :user_id, :value => @current_user.id  %>
+</div>
+<div class="field">
+   <%= f.label :name %>
+   <%= f.text_field(:name, placeholder: "Party description. Ian's birthday") %>
 </div>
 <div class="field">
    <%= f.label :date %>

@@ -1,7 +1,8 @@
 class DinnerParty < ApplicationRecord
-    has_many :dinner_guests
+    has_many :dinner_guests, dependent: :destroy
     belongs_to :user
     has_many :user_reviews, through: :dinner_guests
+    :dependent 
 
    LOCATION_LIST = ["Buckhead", "Downtown", "East Atlanta", "Inman Park", "Little Five Points", "Midtown", "Virginia-Highland", "West Midtown"]
    CUISINE_LIST = ["Asian Fusion", "Cajun", "Chef's Choice", "French", "Indian", "Mediterranean", "Mexican", "Southern"]
