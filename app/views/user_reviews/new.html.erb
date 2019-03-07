@@ -6,7 +6,7 @@
 
 <%= f.hidden_field :dinner_guest_id,:value => params[:dinner_guest_id]  %>
     <div class="field">
-    <%= f.label :rating %><br>
+    <%= f.label :rating, value="Fun Factor" %><br>
     <%= f.select(:rating, UserReview::RATING_LIST) %>
   </div>
 

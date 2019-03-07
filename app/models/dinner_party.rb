@@ -16,6 +16,6 @@ class DinnerParty < ApplicationRecord
         self.date.in_time_zone(Time.now.zone).strftime("%l:%M %P, %A, %B %e, %Y")
     end
     def print_short_date
-        self.date.in_time_zone(Time.now.zone).strftime("%B, %d, %Y @ %l:%M %P")
+        self.date.in_time_zone(Time.now.zone).strftime("%B %d, %Y @ %l:%M %P")
     end
 end
