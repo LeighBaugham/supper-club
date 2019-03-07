@@ -8,9 +8,14 @@ class DinnerGuestsController < ApplicationController
     end
 
     def create
-        @user = current_user
-        @dinner_guest = DinnerGuest.create(user_id: @user.id, dinner_party_id: params[:dinner_party_id])
-        redirect_to dinner_guest_path(@dinner_guest)
+        if logged_in?
+            @user = current_user
+            @dinner_guest = DinnerGuest.create(user_id: @user.id, dinner_party_id: params[:dinner_party_id])
+            redirect_to dinner_guest_path(@dinner_guest)
+        else
+            flash[:error] = "You must login before attending a party!"
+            redirect_to login_path
+        end
     end
 
     def destroy
