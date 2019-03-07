@@ -3,11 +3,12 @@
 
 
 
-
-<h3>Parties Coming Up: </h3>
+<div>
+<h3>Parties Attending: </h3>
 <%= tag.ul do %>
   <% @user.future_parties.each do |party| %>
     <%= tag.li do %>
+      <%= tag.p(party.name ? party.name : "No Name") %>
       <%= tag.p(link_to(party.print_short_date, party)) %>
       <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
     <% end %>
@@ -15,7 +16,19 @@
 <% end %>
 
 <p><%= link_to "View past Parties", user_history_path(@user) %></p>
-
+</div>
+<div>
+  <h3>Hosted Parties</h3>
+    <%= tag.ul do %>
+      <% @user.hosted_parties.each do |party| %>
+        <%= tag.li do %>
+          <%= tag.p(party.name ? party.name : "No Name") %>
+          <%= tag.p(link_to(party.print_short_date, party)) %>
+          <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
+        <% end %>
+      <% end %>
+    <% end %>
+</div>
 <h3><%= @user.user_name.capitalize %> Reviews</h3>
 <% reviews = @user.user_reviews %>
 <% reviews.each do |review|%>
