@@ -15,12 +15,12 @@
   <% end %>
 <% end %>
 
-<p><%= link_to "View past Parties", user_history_path(@user) %></p>
+<p><%= link_to "View past parties", user_history_path(@user) %></p>
 </div>
 <div>
-  <h3>Hosted Parties</h3>
+  <h3>Parties being Hosted</h3>
     <%= tag.ul do %>
-      <% @user.hosted_parties.each do |party| %>
+      <% @user.future_hosted_parties.each do |party| %>
         <%= tag.li do %>
           <%= tag.p(party.name ? party.name : "No Name") %>
           <%= tag.p(link_to(party.print_short_date, party)) %>
