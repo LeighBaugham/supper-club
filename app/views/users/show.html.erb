@@ -37,11 +37,9 @@
     <% reviews.each do |review|%>
       <%= tag.li do %>
         <%= tag.p do %>
-          <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review %>
+          <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review.dinner_party %>
         <% end %>
-        <%= tag.p do %>
-          <pre><%= "[#{review.rating} out of 5] #{review.review_text.first(30)}..." %></pre>
-        <% end %>
+          <%= tag.pre link_to("[#{review.rating} out of 5] #{review.review_text.first(30)}...", review)%>
       <% end %>
     <% end %>
   </ul>
