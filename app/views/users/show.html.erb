@@ -40,7 +40,7 @@
           <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review %>
         <% end %>
         <%= tag.p do %>
-          <pre><%= review.review_text.first(30) + "..." %></pre>
+          <pre><%= "[#{review.rating} out of 5] #{review.review_text.first(30)}..." %></pre>
         <% end %>
       <% end %>
     <% end %>
