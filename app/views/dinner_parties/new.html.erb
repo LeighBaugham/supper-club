@@ -1,37 +1,52 @@
 <h1>Let's Throw a Party!</h1>
 
-<% @current_user = current_user %>
-
 <div class="field">
-   Your chef and host: <%=  @current_user.name %>
+   <h5>Your chef and host: <%=  @current_user.name %> </h5>
 </div>
 
 <%= form_for(@dinner_party) do |f| %>
-<div class="field">
-<%= f.hidden_field :user_id, :value => @current_user.id  %>
-</div>
-<div class="field">
-   <%= f.label :name %>
-   <%= f.text_field(:name, placeholder: "Party description. Ian's birthday") %>
-</div>
-<div class="field">
-   <%= f.label :date %>
-   <%= f.date_field(:date, placeholder: "Date") %>
-</div>
-<div class="field">
-    <%= f.label :location %><br>
-    <%= f.select(:location, DinnerParty::LOCATION_LIST) %>
-  </div>
-  <div class="field">
-     <%= f.label :cuisine %> <br>
-     <%= f.select(:cuisine, DinnerParty::CUISINE_LIST) %>
-  </div>
-<div class="field">
-   <%= f.label :max_guests %>
-   <%= f.text_field(:max_guests, placeholder: "Maximum Guest Count") %><br>
-</div>
-<div class="field">
-<%= f.label :price_per_guest %> <%= f.text_field(:price_per_guest, placeholder: "Price per Guest") %>
-</div>
-<%= f.submit %>
+
+   <div class="input-field">
+      <%= f.hidden_field :user_id, :value => @current_user.id  %>
+   </div>
+   <div class="row">
+      <div class="col s5">
+         <div class="input-field">
+         <%= f.text_field(:name)%>
+         <%= f.label :name %>
+         </div>
+
+      </div>
+      <div class="col s3">
+         <div class="input-field">
+            <%= f.date_field(:date, placeholder: "Date") %>
+            <%= f.label :date %>
+         </div>
+      </div>
+   
+      <div class="col s3">
+         <div class="input-field">
+         <%= f.select(:location, DinnerParty::LOCATION_LIST) %>
+         <%= f.label :location %>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s4">
+      
+      <div class="input-field">
+         <%= f.select(:cuisine, DinnerParty::CUISINE_LIST) %>
+         <%= f.label :cuisine %>
+      </div>
+      </div>
+      <div class="input-field col s4 ">
+         <%= f.text_field(:max_guests) %>
+         <%= f.label :max_guests %>
+      </div>
+      <div class="col s3 input-field">
+      <%= f.label :price_per_guest %> 
+      <%= f.text_field(:price_per_guest) %>
+      </div>
+   </div>
+   <%= f.submit %>
 <% end %>

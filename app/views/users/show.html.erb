@@ -23,7 +23,7 @@
     <%= tag.ul class: ["collection"] do %>
       <% @user.future_hosted_parties.each do |party| %>
         <%= tag.li class: ["collection-item"] do %>
-          <%= tag.i "add_alert", class: ["left","material-icons"]  %>
+          <%= tag.i "insert_invitation", class: ["left","material-icons"]  %>
           <%= party.name ? party.name : "No Name" %> <br>
           <%= link_to(party.print_short_date, party) %> <br>
           <%= "Location: #{party.location}, Confirmed Guests: #{party.dinner_guests.count}" %>
@@ -52,3 +52,5 @@
     <%= link_to("Edit User Info", edit_user_path,
                 class: ["waves-effect", "waves-light", "btn", 'deep-orange', 'darken-1']) %><br>
 <% end %>
+
+<div class="section"></div>

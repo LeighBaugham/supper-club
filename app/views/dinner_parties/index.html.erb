@@ -3,11 +3,13 @@
         <%= tag.ul class:["collection"] do %>
             <% @dinner_parties.each do |party| %>
             <%= tag.li class:["collection-item"] do  %>
-                <%= tag.i "add_circle", class:["left","material-icons",] %>
-                <%= link_to ("#{party.name} - #{party.print_short_date} in #{party.location}"), dinner_party_path(party.id)%> <br>
+                <%= link_to(party) do %>
+                    <%= tag.i "add_circle", class:["left","material-icons",] %>
+                <% end %>
+                <%= link_to ("#{party.name} - #{party.print_short_date} in #{party.location}"), party %> <br>
                 <%= link_to party, method: :delete, data: { confirm: "Are you sure?" }, class: [] do %>
-            <% end %>
-                <i class="material-icons tiny">delete</i>
+                    <i class="material-icons tiny">delete</i>
+                <% end %>
             <% end %>
         <% end %>
         <% end %>
