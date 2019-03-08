@@ -1,12 +1,15 @@
 <h1>Dinner Parties</h1>
     <div class="col s2">
-        <ul>
-        <% @dinner_parties.each {|party| %>
-        <li><%= link_to ("#{party.name} - #{party.print_short_date} in #{party.location}"), dinner_party_path(party.id)%> <br>
-        <%= link_to party, method: :delete, data: { confirm: "Are you sure?" }, class: [] do %></li>
+        <%= tag.ul class:["collection"] do %>
+            <% @dinner_parties.each do |party| %>
+            <%= tag.li class:["collection-item"] do  %>
+                <%= tag.i "add_circle", class:["left","material-icons",] %>
+                <%= link_to ("#{party.name} - #{party.print_short_date} in #{party.location}"), dinner_party_path(party.id)%> <br>
+                <%= link_to party, method: :delete, data: { confirm: "Are you sure?" }, class: [] do %>
+            <% end %>
                 <i class="material-icons tiny">delete</i>
             <% end %>
-        <% } %>
-        </ul>
+        <% end %>
+        <% end %>
     </div>
 <p> <%= link_to "Host a party", new_dinner_party_path, class: ['waves-effect', 'waves-light', 'btn', 'deep-orange', 'darken-1'] %> </p>
