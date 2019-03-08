@@ -1,50 +1,54 @@
-<h1>User Profile: <%= @user.name %></h1>
-<h2>Username: <%= @user.user_name %></h2>
+<h3>User Profile: <%= @user.name %></h3>
 
+<div class="divider"></div>
 
-
-<div>
-<h3>Parties Attending: </h3>
-<%= tag.ul do %>
+<div class="section">
+<h5>Parties Attending: </h5>
+<%= tag.ul class: ["collection"]  do %>
   <% @user.future_parties.each do |party| %>
-    <%= tag.li do %>
-      <%= tag.p(party.name ? party.name : "No Name") %>
-      <%= tag.p(link_to(party.print_short_date, party)) %>
-      <%= tag.p("Host: #{party.user.name}, Location: #{party.location}") %>
+    <%= tag.li class:["collection-item"] do %>
+      <%= tag.i "cake", class: ["left","material-icons"]  %>
+      <%= party.name ? party.name : "No Name" %> <br>
+      <%= link_to(party.print_short_date, party) %> <br>
+      <%=  "Host: #{party.user.name}, Location: #{party.location}" %>
     <% end %>
   <% end %>
 <% end %>
 
 <p><%= link_to "View past parties", user_history_path(@user) %></p>
 </div>
-<div>
-  <h3>Parties being Hosted</h3>
-    <%= tag.ul do %>
+<div class="divider"></div>
+<div class="section">
+  <h5>Parties being Hosted</h5>
+    <%= tag.ul class: ["collection"] do %>
       <% @user.future_hosted_parties.each do |party| %>
-        <%= tag.li do %>
-          <%= tag.p(party.name ? party.name : "No Name") %>
-          <%= tag.p(link_to(party.print_short_date, party)) %>
-          <%= tag.p("Location: #{party.location}, Confirmed Guests: #{party.dinner_guests.count}") %>
+        <%= tag.li class: ["collection-item"] do %>
+          <%= tag.i "add_alert", class: ["left","material-icons"]  %>
+          <%= party.name ? party.name : "No Name" %> <br>
+          <%= link_to(party.print_short_date, party) %> <br>
+          <%= "Location: #{party.location}, Confirmed Guests: #{party.dinner_guests.count}" %>
         <% end %>
       <% end %>
     <% end %>
 </div>
-
-
-<h3><%= @user.user_name.capitalize %> Reviews</h3>
+<div class="divider"></div>
+<div class="section">
+<h5><%= @user.user_name.capitalize %> Reviews</h5>
   <% reviews = @user.user_reviews %>
-  <ul>
+  <%= tag.ul class:["collection"] do %>
     <% reviews.each do |review|%>
-      <%= tag.li do %>
-        <%= tag.p do %>
-          <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review.dinner_party %>
-        <% end %>
-          <%= tag.pre link_to("[#{review.rating} out of 5] #{review.review_text.first(30)}...", review)%>
+      <%= tag.li class:["collection-item"] do %>
+        <%= tag.i "comment", class: ["left","material-icons"]  %>
+        <%= link_to "#{review.dinner_party.name}, #{review.dinner_party.print_short_date}", review.dinner_party %> <br>
+        <%= tag.pre link_to("[#{review.rating} out of 5] #{review.review_text.first(30)}...", review)%>
       <% end %>
     <% end %>
-  </ul>
-
+  <% end %>
+</div>
 <% if logged_in? %>
-    <%= link_to( "Delete", @user, method: :delete, data: { confirm: "Are you sure?" }) %>
-    <%= link_to("Edit User Info", edit_user_path) %><br>
+    <%= link_to("Delete Profile", @user, method: :delete, 
+                data: { confirm: "Are you sure?" },
+                class: ["waves-effect", "waves-light", "btn", 'deep-orange', 'darken-1']) %>
+    <%= link_to("Edit User Info", edit_user_path,
+                class: ["waves-effect", "waves-light", "btn", 'deep-orange', 'darken-1']) %><br>
 <% end %>

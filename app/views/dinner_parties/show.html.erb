@@ -1,35 +1,25 @@
-<h1>Dinner Party Details</h1>
+<h3><%= @dinner_party.name %></h1>
 
-<h1><%= @dinner_party.name %></h1>
-
-<h2>Host and Chef: <%= @dinner_party.user.name %></h2><br />
-<h3>Date: <%= @dinner_party.date %> </h3>
-<h3>Place: <%= @dinner_party.location %> </h3>
-<h3>Cuisine: <%= @dinner_party.cuisine %> </h3>
-
+<h4>Host and Chef: <%= @dinner_party.user.name %></h2><br />
+<%= tag.p do %>
+  Date: <%= @dinner_party.print_long_date %> <br>
+  Place: <%= @dinner_party.location %> <br>
+  Cuisine: <%= @dinner_party.cuisine %> <br>
+<% end %>
 <% if logged_in? && current_user.attending?(@dinner_party) %>
-<h3>To review this party, click here</h3>
 <%= form_tag new_user_review_path , method: "get" do %>
 <%= hidden_field_tag :dinner_guest_id, @dinner_party.dinner_guests.find {|dg| dg.user_id == current_user.id  }.id  %>
-<%= submit_tag "Review" %>
+<%= submit_tag "Write a Review" %>
 <% end %>
 
 
 <% else %>
-<h3>To attend this party, click here
 <%= form_tag dinner_guests_path , method: "post" do %>
 <%= hidden_field_tag "dinner_party_id", @dinner_party.id  %>
-<%= submit_tag "Attend" %>
+<%= submit_tag "Attend This Party" %>
 <% end %>
 <% end %>
-
-
-</h3>
-<h3>To select a different party, click <%= link_to " here.", dinner_parties_path %> </h3>
-<h3>To create a new dinner party, click <%= link_to " here.", new_dinner_party_path %>  </h3>
-<h3>To cancel this party, click here
-
+<br>
 <%= form_tag dinner_party_path(@dinner_party.id), method: "delete" do %>
-  <%= submit_tag "Cancel this party'" %>
+  <%= submit_tag "Cancel this party" %>
 <% end %>
-</h3>
