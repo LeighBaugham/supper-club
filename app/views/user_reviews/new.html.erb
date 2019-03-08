@@ -1,11 +1,12 @@
 <h1>Write a Review</h1>
 
-<%= form_for(@user_review) do |f| %>
+<%= form_for(@user_review)do |f| %>
+
 <%= f.label :review_text %>
 <%= f.text_area :review_text %><br>
 
 <%= f.hidden_field :dinner_guest_id,:value => params[:dinner_guest_id]  %>
-    <div class="field">
+    <div class="input-field">
     <%= f.label :rating, value="Fun Factor" %><br>
     <%= f.select(:rating, UserReview::RATING_LIST) %>
   </div>
