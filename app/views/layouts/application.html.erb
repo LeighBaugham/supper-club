@@ -4,24 +4,42 @@
     <title>SupperClub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    </head>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, '');
+        });
+      </script>
   <body>
-    <nav>
-      <%= link_to "Home", root_path %>
-      <%= link_to "View Parties", dinner_parties_path %>
-      <% if logged_in? %>
-        <%= link_to "My Profile", user_path(current_user) %>
-        <%= link_to "Log Out", logout_path %>
-        <span class="user-name"><%= current_user.user_name %></span>
-      <% else %>
-        <%= link_to "Log In", login_path %>
-        <%= link_to "Sign Up!", new_user_path %>
-  
+    <div class="container">
+    <nav class="deep-orange">
+      <div class="nav-wrapper">
+      <%= link_to "#", class: ["brand-logo", "right"] do %>
+        <%= "Supper Club".html_safe %>
+        <%= tag.i "local_dining", class: ["large","material-icons"], style: "font-size: 50px;" %>
       <% end %>
+      <%= tag.ul id: ["nav-mobile"],class: ["left", "hide-on-med-and-down"] do %>
+        <%= tag.li link_to "Home", root_path %>
+        <%= tag.li link_to "View Parties", dinner_parties_path %>
+        <% if logged_in? %>
+          <%= tag.li link_to "My Profile", user_path(current_user) %>
+          <%= tag.li link_to "Log Out", logout_path %>
+          <span class="user-name"><%= current_user.user_name %></span>
+        <% else %>
+          <%= tag.li link_to "Log In", login_path %>
+          <%= tag.li link_to "Sign Up!", new_user_path %>
+        <% end %>
+      <% end %>
+      </div>
     </nav>
     <% if flash[:error] %>
       <p style="color: red">
@@ -33,5 +51,6 @@
     <div>
       <%= yield %>
     </div>
+  </div>
   </body>
 </html>
